@@ -2,11 +2,13 @@
     "name": "event-emitter",
     "version": "0.0.1",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "test": "jest --watch --coverage ./src",
-        "build": "tsc --declaration --outDir ./dist",
-        "postinstall": "npm run build"
+        "test:watch": "jest --watch --coverage ./src",
+        "test": "jest ./src",
+        "build": "rm -rf ./dist && tsc",
+        "prepare": "npm run build"
     },
     "author": "jesseminn@gmail.com",
     "license": "ISC",
@@ -25,5 +27,8 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
-    }
+    },
+    "files": [
+        "dist/**/*"
+    ]
 }
